@@ -3,6 +3,7 @@ models/
 data/
 recommendations/
 *.pkl
+*.code-workspace
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
