@@ -8,7 +8,7 @@ BACKEND_DIR="${MLFLOW_DIR}/backend"
 ARTIFACTS_DIR="${MLFLOW_DIR}/artifacts"
 
 HOST="0.0.0.0"
-PORT="5000"
+PORT="5001"
 
 mkdir -p "${BACKEND_DIR}"
 mkdir -p "${ARTIFACTS_DIR}"
