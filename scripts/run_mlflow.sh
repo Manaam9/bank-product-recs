@@ -11,9 +11,24 @@ ARTIFACTS_DIR="${MLFLOW_DIR}/artifacts"
 HOST="0.0.0.0"
 PORT="5001"
 
+# Проверка MLflow
+if ! command -v mlflow >/dev/null 2>&1; then
+  echo "mlflow is not installed or not found in PATH"
+  exit 1
+fi
+
 # Подготовка директорий
 mkdir -p "${MLFLOW_DIR}"
 mkdir -p "${ARTIFACTS_DIR}"
+
+# Остановка старого процесса на этом порту
+if command -v lsof >/dev/null 2>&1; then
+  EXISTING_PID="$(lsof -ti tcp:${PORT} || true)"
+  if [ -n "${EXISTING_PID}" ]; then
+    echo "Stopping process on port ${PORT}: ${EXISTING_PID}"
+    kill -9 ${EXISTING_PID} || true
+  fi
+fi
 
 # Пути MLflow
 BACKEND_URI="sqlite:///${MLFLOW_DIR}/mlflow.db"
@@ -36,3 +51,4 @@ mlflow server \
   --default-artifact-root "${ARTIFACT_URI}" \
   --host "${HOST}" \
   --port "${PORT}"
+  
