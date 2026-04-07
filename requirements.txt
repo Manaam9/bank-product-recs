@@ -18,7 +18,7 @@ babel==2.18.0
 beautifulsoup4==4.14.3
 bleach==6.3.0
 blinker==1.9.0
-boto3==1.42.78
+boto3
 botocore==1.42.70
 cachetools==7.0.5
 catboost==1.2.10
@@ -121,7 +121,7 @@ pandas==2.3.3
 pandocfilters==1.5.1
 parso==0.8.6
 pexpect==4.9.0
-phik==0.12.5
+phik
 pillow==12.1.1
 platformdirs==4.9.4
 plotly==6.6.0
